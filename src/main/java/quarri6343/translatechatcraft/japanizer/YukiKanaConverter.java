@@ -13,6 +13,7 @@ import java.util.Set;
  * 「ローマ字」から「かな文字」へ正確に変換するクラス
  *
  * @author YukiLeafX
+ * Modified by Quarri6343
  * @see <a href="https://support.microsoft.com/ja-jp/help/883232">参考</a>
  */
 public class YukiKanaConverter {

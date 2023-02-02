@@ -3,6 +3,7 @@ package quarri6343.translatechatcraft.japanizer;
 /**
  * 日本語変換タイプ
  * @author ucchy
+ * Modified by Quarri6343
  */
 public enum JapanizeType {
 

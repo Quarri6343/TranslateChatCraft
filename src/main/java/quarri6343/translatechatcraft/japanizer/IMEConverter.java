@@ -3,6 +3,7 @@ package quarri6343.translatechatcraft.japanizer;
  * @author     ucchy
  * @license    LGPLv3
  * @copyright  Copyright ucchy 2020
+ * Modified by Quarri6343
  */
 
 import com.google.common.io.CharStreams;
