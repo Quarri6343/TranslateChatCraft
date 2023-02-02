@@ -1,0 +1,4 @@
+name: TranslateChatCraft
+version: '${version}'
+main: quarri6343.translatechatcraft.TranslateChatCraft
+api-version: 1.16
