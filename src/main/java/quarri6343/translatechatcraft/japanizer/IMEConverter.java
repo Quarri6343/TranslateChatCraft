@@ -33,18 +33,21 @@ public class IMEConverter {
      * @param org 変換元
      * @return 変換後
      */
-    public static String convByGoogleIME(String org) {
-        return conv(org);
+    public static String convByGoogleIME(String org, boolean isNick) {
+        return conv(org, isNick);
     }
 
     // 変換の実行
-    private static String conv(String org) {
+    private static String conv(String org, boolean isNick) {
 
         if ( org.length() == 0 ) {
             return "";
         }
         
-        if(LanguageSwitchCommand.currentLang == LanguageSwitchCommand.CurrentLang.JA)
+        if(LanguageSwitchCommand.currentLang == LanguageSwitchCommand.CurrentLang.JA && !isNick)
+            return org;
+        
+        if(LanguageSwitchCommand.currentLang == LanguageSwitchCommand.CurrentLang.EN && isNick)
             return org;
 
         HttpURLConnection urlconn = null;
@@ -52,7 +55,7 @@ public class IMEConverter {
         try {
             String baseurl;
             String encode;
-            baseurl = GOOGLE_IME_URL_1 + URLEncoder.encode(org , "UTF-8") + LanguageSwitchCommand.currentLang.url;
+            baseurl = GOOGLE_IME_URL_1 + URLEncoder.encode(org , "UTF-8") + (isNick ? LanguageSwitchCommand.currentLang.nickUrl : LanguageSwitchCommand.currentLang.url);
             encode = "UTF-8";
             URL url = new URL(baseurl);
 
@@ -98,6 +101,6 @@ public class IMEConverter {
         String testee = "sonnnakotohanak(ry)";
         System.out.println("original : " + testee);
         System.out.println("kana : " + YukiKanaConverter.conv(testee));
-        System.out.println("GoogleIME : " + convByGoogleIME(YukiKanaConverter.conv(testee)));
+        System.out.println("GoogleIME : " + convByGoogleIME(YukiKanaConverter.conv(testee), false));
     }
 }

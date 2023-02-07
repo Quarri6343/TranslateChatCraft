@@ -26,7 +26,7 @@ public class PlayerChatEvent implements Listener {
             return;
         }
 
-        String japanizedMessage = Japanizer.japanize(message, JapanizeType.GOOGLE_IME, new HashMap<String, String>());
+        String japanizedMessage = Japanizer.japanize(message, JapanizeType.GOOGLE_IME, new HashMap<String, String>(), false);
 
         if(!japanizedMessage.equals("")){
             Component component = Component.text(japanizedMessage).hoverEvent(e.message());

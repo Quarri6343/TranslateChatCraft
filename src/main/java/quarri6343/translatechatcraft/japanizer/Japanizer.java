@@ -25,7 +25,7 @@ public class Japanizer {
      * @return
      */
     public static String japanize(String org, JapanizeType type,
-                                  Map<String, String> dictionary) {
+                                  Map<String, String> dictionary, boolean isNick) {
 
         // 変換不要なら空文字列を返す
 //        if ( type == JapanizeType.NONE || !isNeedToJapanize(org) ) {
@@ -49,11 +49,11 @@ public class Japanizer {
         }
 
         // カナ変換
-        String japanized = YukiKanaConverter.conv(keywordLocked);
+        String japanized = isNick ? org : YukiKanaConverter.conv(keywordLocked);
 
         // IME変換
         if ( type == JapanizeType.GOOGLE_IME ) {
-            japanized = IMEConverter.convByGoogleIME(japanized);
+            japanized = IMEConverter.convByGoogleIME(japanized, isNick);
 //        } else if ( type == JapanizeType.SOCIAL_IME ) {
 //            japanized = IMEConverter.convBySocialIME(japanized);
         }
